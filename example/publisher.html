@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>	
+		<script src='crosstab.events.js'></script>
+	</head>
+	<body>
+		<h1>To test the example host it on a web server.</h1>
+		<input id='btn-send-message' type='button' value='SEND MESSAGE' />
+		<script>
+			// trigger an event from a different tab/window
+			$('#btn-send-message').on('click', function(){
+				$.crosstab.trigger('connected-with-stripe', { name : 'john@doe.com' });
+			});
+		</script>	
+	</body>
+</html>

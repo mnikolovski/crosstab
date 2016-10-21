@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>	
+		<script src='crosstab.events.js'></script>
+	</head>
+	<body>
+		<h1>To test the example host it on a web server.</h1>
+		<div id='message-log'></div>
+		<script>
+			// turn off the provided callback subscriptions under the provided event
+			$.crosstab.off('connected-with-stripe', onConnectedWithStripeCallback);	
+			
+			// turn off all subscriptions under the provided event
+			$.crosstab.off('connected-with-stripe');				
+			
+			// subscribe to crosstab message
+			$.crosstab.on('connected-with-stripe', function(e){
+				console.log(JSON.stringify(e.detail.value))
+			});
+		
+			// subscribe to crosstab message
+			$.crosstab.on('connected-with-stripe', onConnectedWithStripeCallback);
+			
+			// subscription callback
+			function onConnectedWithStripeCallback(e){
+				// e.detail.name
+				// e.detail.value
+				var $message = $('<span />').text(JSON.stringify(e.detail.value));
+				$('#message-log').append($message);			
+			}			
+		</script>	
+	</body>
+</html>
